@@ -1,10 +1,10 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const WORDS = {
-	buddy: /[Дд]ружок|[Дд]ружочек/gi,
-	chack: /[Чч]ак/gi,
-	anime: /[Аа]ниме/gi,
-	early: /[Гг]де/gi
+	buddy: /дружок|дружочек/gi,
+	chack: /чак/gi,
+	anime: /аниме/gi,
+	early: /где/gi
 };
 
 bot.login(process.env.BOT_TOKEN);
