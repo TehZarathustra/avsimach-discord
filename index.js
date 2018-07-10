@@ -30,3 +30,13 @@ bot.on('message', message => {
 		}
 	});
 });
+
+bot.on('guildMemberAdd', member => {
+	const role = member.guild.roles.find('name', 'суетливый');
+	const guild = member.guild;
+	console.log('member >>>', member, 'role >>>', role);
+
+	// 198147312244097024
+	member.addRole(role).catch(console.error);
+	// guild.defaultChannel.sendMessage.channel.send(JSON.stringify(role));
+});
