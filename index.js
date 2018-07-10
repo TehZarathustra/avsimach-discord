@@ -1,9 +1,10 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const WORDS = {
-	buddy: /[Д-д]ружок|[Д-д]ружочек/g,
-	chack: /[Ч-ч]ак/g,
-	anime: /[А-а]ниме/g
+	buddy: /[Дд]ружок|[Дд]ружочек/g,
+	chack: /[Чч]ак/g,
+	anime: /[Аа]ниме/g,
+	early: /[Гг]де/g
 };
 
 bot.login(process.env.BOT_TOKEN);
@@ -19,5 +20,9 @@ bot.on('message', message => {
 
 	if (WORDS.anime.test(message.content)) {
 		message.reply('китайские порномультики – это свинство');
+	}
+
+	if (WORDS.early.test(message.content)) {
+		message.reply('ранний доступ');
 	}
 });
