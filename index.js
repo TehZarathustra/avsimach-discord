@@ -1,28 +1,32 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const WORDS = {
-	buddy: /дружок|дружочек/gi,
-	chack: /чак/gi,
-	anime: /аниме/gi,
-	early: /где/gi
+	buddy: {
+		pattern: /дружок|дружочек/gi,
+		reply: 'пирожочек'
+	},
+	chack: {
+		pattern: /чак/gi,
+		reply: 'https://cdn.discordapp.com/attachments/444034088429551619/466315013607522304/5b168d61ee2cc163d01846b8.png'
+	},
+	anime: {
+		pattern: /аниме/gi,
+		reply: 'китайские порномультики – это свинство'
+	},
+	early: {
+		pattern: /где/gi,
+		reply: 'ранний доступ'
+	}
 };
 
 bot.login(process.env.BOT_TOKEN);
 
 bot.on('message', message => {
-	if (WORDS.buddy.test(message.content)) {
-		message.reply('пирожочек');
-	}
+	Object.keys(WORDS).forEach(key => {
+		const word = WORDS[key];
 
-	if (WORDS.chack.test(message.content)) {
-		message.reply('https://cdn.discordapp.com/attachments/444034088429551619/466315013607522304/5b168d61ee2cc163d01846b8.png');
-	}
-
-	if (WORDS.anime.test(message.content)) {
-		message.reply('китайские порномультики – это свинство');
-	}
-
-	if (WORDS.early.test(message.content)) {
-		message.reply('ранний доступ');
-	}
+		if (word.pattern.test(message.content)) {
+			message.reply(word.reply);
+		}
+	});
 });
