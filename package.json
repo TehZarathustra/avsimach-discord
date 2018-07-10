@@ -1,0 +1,10 @@
+{
+  "name": "discord-bot",
+  "description": "discord bot",
+  "scripts": {
+    "start": "BOT_TOKEN=${BOT_TOKEN} node index.js"
+  },
+  "dependencies": {
+    "discord.js": "^11.3.2"
+  }
+}
