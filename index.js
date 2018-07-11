@@ -40,9 +40,9 @@ bot.on('message', message => {
 
 				message.reply({
 					file: gif.images.original.gif_url
-				})
+				});
 			})
-			.catch((err) => console.log(err));
+			.catch(console.error);
 	}
 });
 
