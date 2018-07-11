@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const PORT = process.env.PORT || 5000;
 
 const Discord = require('discord.js');
 const bot = new Discord.Client();
