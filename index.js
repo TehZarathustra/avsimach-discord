@@ -51,7 +51,7 @@ bot.on('guildMemberAdd', member => {
 	const channel = guild.channels.get(HOME_ID);
 
 	if (member.user.id === HAWKS_ID) {
-		member.addRoles(getHawksRoles())
+		member.addRoles(getHawksRoles(member))
 			.then(() => {
 				channel.send('Слушай, во, я знаю как, браток! Хочешь я на одной ноге постою, а ты мне погону отдашь? Как цапля, хочешь?', {
 					file: 'https://coubsecure-s.akamaihd.net/get/b16/p/coub/simple/cw_timeline_pic/31e7cd621e0/dff6fc9898d6fc00818aa/med_1409276124_1382483368_image.jpg'
