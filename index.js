@@ -35,6 +35,10 @@ bot.on('message', message => {
 	if (/anime|аниме/gi.test(message.content)) {
 		search(message, 'anime');
 	}
+
+	if (/60\/40/gi.test(message.content)) {
+		checkInfa(message);
+	}
 });
 
 bot.on('guildMemberAdd', member => {
@@ -62,4 +66,16 @@ function getHawksRoles(message) {
 		roles.find('name', 'ветеран раснарас').id,
 		roles.find('name', 'коричневые штаны').id
 	];
+}
+
+function checkInfa(message) {
+	const channel = message.guild.channels.get(HOME_ID);
+
+	message.reply('Проверяю инфу...');
+
+	setTimeout(() => {
+		channel.send('Проверил. ' + Math.floor(Math.random() * 10) > 4
+			? 'Инфа ложная'
+			: 'Проверил. Инфу подтверждаю');
+	}, 5000);
 }
