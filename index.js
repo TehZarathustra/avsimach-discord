@@ -1,6 +1,13 @@
+const express = require('express');
+const app = express();
+
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const {search} = require('./lib/giphy.js');
+
+app.get('/', function (req, res) {
+	res.send('avsimach discord bot');
+});
 
 const HAWKS_ID = '198147312244097024';
 const HOME_ID = '444034088429551619';
@@ -81,3 +88,5 @@ function checkInfa(message) {
 			: 'Проверил. Инфу подтверждаю');
 	}, 5000);
 }
+
+app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
