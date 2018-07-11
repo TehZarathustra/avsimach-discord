@@ -46,6 +46,12 @@ bot.on('message', message => {
 		}
 	}
 
+	if (/su-27|су-27|сушечк[иа]|су27|фланкер|сушка/gi.test(message.content)) {
+		if (Boolean(Math.floor(Math.random() * 2))) {
+			search(message, 'su 27');
+		}
+	}
+
 	if (/60\/40/gi.test(message.content)) {
 		checkInfa(message);
 	}
