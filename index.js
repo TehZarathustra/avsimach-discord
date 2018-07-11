@@ -33,7 +33,9 @@ bot.on('message', message => {
 	});
 
 	if (/anime|аниме/gi.test(message.content)) {
-		search(message, 'anime');
+		if (Boolean(Math.floor(Math.random() * 2))) {
+			search(message, 'anime');
+		}
 	}
 
 	if (/60\/40/gi.test(message.content)) {
