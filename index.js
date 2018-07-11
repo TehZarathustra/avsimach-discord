@@ -1,5 +1,7 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
+const HAWKS_ID = 198147312244097024;
+const HOME_ID = 444034088429551619;
 const WORDS = {
 	buddy: {
 		pattern: /дружок|дружочек/gi,
@@ -7,7 +9,9 @@ const WORDS = {
 	},
 	chack: {
 		pattern: /чак/gi,
-		reply: 'https://cdn.discordapp.com/attachments/444034088429551619/466315013607522304/5b168d61ee2cc163d01846b8.png'
+		reply: {
+			file: 'https://cdn.discordapp.com/attachments/444034088429551619/466315013607522304/5b168d61ee2cc163d01846b8.png'
+		}
 	},
 	anime: {
 		pattern: /аниме/gi,
@@ -29,14 +33,35 @@ bot.on('message', message => {
 			message.reply(word.reply);
 		}
 	});
+
+	if (message.content === 'debug') {
+		console.log('getHawksRoles >>>', getHawksRoles(message));
+	}
 });
 
 bot.on('guildMemberAdd', member => {
-	const role = member.guild.roles.find('name', 'суетливый');
 	const guild = member.guild;
-	console.log('member >>>', member, 'role >>>', role);
+	const channel = guild.channels.get(HOME_ID);
 
-	// 198147312244097024
-	member.addRole(role).catch(console.error);
-	// guild.defaultChannel.sendMessage.channel.send(JSON.stringify(role));
+	if (member.user.id === HAWKS_ID) {
+		member.addRoles(getHawksRoles())
+			.then(() => {
+				channel.send('Слушай, во, я знаю как, браток! Хочешь я на одной ноге постою, а ты мне погону отдашь? Как цапля, хочешь?', {
+					file: 'https://coubsecure-s.akamaihd.net/get/b16/p/coub/simple/cw_timeline_pic/31e7cd621e0/dff6fc9898d6fc00818aa/med_1409276124_1382483368_image.jpg'
+				});
+			})
+			.catch(console.error);
+	}
 });
+
+function getHawksRoles(message) {
+	const roles = message.guild.roles;
+
+	return [
+		roles.find('name', 'суетливый').id,
+		roles.find('name', 'ochoba').id,
+		roles.find('name', 'anime').id,
+		roles.find('name', 'ветеран раснарас').id,
+		roles.find('name', 'коричневые штаны').id
+	];
+}
