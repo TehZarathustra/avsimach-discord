@@ -34,9 +34,9 @@ bot.on('message', message => {
 	});
 
 	if (/anime|аниме/gi.test(message.content)) {
-		giphyClient.search('gifs', {q: 'anime'})
+		giphyClient.search('gifs', {q: 'anime', limit: 50})
 			.then(response => {
-				const gif = response.data[Math.floor(Math.random() * (response.data.length - 1))];
+				const gif = response.data[Math.floor(Math.random() * (response.data.length))];
 
 				message.reply({
 					file: gif.images.original.gif_url
