@@ -2,8 +2,8 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 const GphApiClient = require('giphy-js-sdk-core')
 
-const HAWKS_ID = 198147312244097024;
-const HOME_ID = 444034088429551619;
+const HAWKS_ID = '198147312244097024';
+const HOME_ID = '444034088429551619';
 const WORDS = {
 	buddy: {
 		pattern: /дружок|дружочек/gi,
