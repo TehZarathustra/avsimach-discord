@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const GphApiClient = require('giphy-js-sdk-core')
+const {search} = require('./lib/giphy.js');
 
 const HAWKS_ID = '198147312244097024';
 const HOME_ID = '444034088429551619';
@@ -22,7 +22,6 @@ const WORDS = {
 };
 
 bot.login(process.env.BOT_TOKEN);
-const giphyClient = GphApiClient(process.env.GIPHY_TOKEN);
 
 bot.on('message', message => {
 	Object.keys(WORDS).forEach(key => {
@@ -34,15 +33,7 @@ bot.on('message', message => {
 	});
 
 	if (/anime|аниме/gi.test(message.content)) {
-		giphyClient.search('gifs', {q: 'anime', limit: 50})
-			.then(response => {
-				const gif = response.data[Math.floor(Math.random() * (response.data.length))];
-
-				message.reply({
-					file: gif.images.original.gif_url
-				});
-			})
-			.catch(console.error);
+		search(message, 'anime');
 	}
 });
 
