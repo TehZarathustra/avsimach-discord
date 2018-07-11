@@ -5,6 +5,7 @@
     "start": "BOT_TOKEN=${BOT_TOKEN} node index.js"
   },
   "dependencies": {
-    "discord.js": "^11.3.2"
+    "discord.js": "^11.3.2",
+    "giphy-js-sdk-core": "^1.0.5"
   }
 }

@@ -1,5 +1,7 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
+const GphApiClient = require('giphy-js-sdk-core')
+
 const HAWKS_ID = 198147312244097024;
 const HOME_ID = 444034088429551619;
 const WORDS = {
@@ -13,10 +15,6 @@ const WORDS = {
 			file: 'https://cdn.discordapp.com/attachments/444034088429551619/466315013607522304/5b168d61ee2cc163d01846b8.png'
 		}
 	},
-	anime: {
-		pattern: /аниме/gi,
-		reply: 'китайские порномультики – это свинство'
-	},
 	early: {
 		pattern: /где/gi,
 		reply: 'ранний доступ'
@@ -24,6 +22,7 @@ const WORDS = {
 };
 
 bot.login(process.env.BOT_TOKEN);
+const giphyClient = GphApiClient(process.env.GIPHY_TOKEN);
 
 bot.on('message', message => {
 	Object.keys(WORDS).forEach(key => {
@@ -34,8 +33,16 @@ bot.on('message', message => {
 		}
 	});
 
-	if (message.content === 'debug') {
-		console.log('getHawksRoles >>>', getHawksRoles(message));
+	if (/anime|аниме/gi.test(message.content)) {
+		giphyClient.search('gifs', {q: 'anime'})
+			.then(response => {
+				const gif = response.data[Math.floor(Math.random() * (response.data.length - 1))];
+
+				message.reply({
+					file: gif.images.original.gif_url
+				})
+			})
+			.catch((err) => console.log(err));
 	}
 });
 

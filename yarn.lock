@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+asap@~2.0.3:
+  version "2.0.6"
+  resolved "http://storage.mds.yandex.net/get-npm/69187/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
+
 async-limiter@~1.0.0:
   version "1.0.0"
   resolved "http://storage.mds.yandex.net/get-npm/45674/async-limiter-1.0.0.tgz#78faed8c3d074ab81f22b4e985d79e8738f720f8"
@@ -16,17 +20,74 @@ discord.js@^11.3.2:
     tweetnacl "^1.0.0"
     ws "^4.0.0"
 
+encoding@^0.1.11:
+  version "0.1.12"
+  resolved "http://storage.mds.yandex.net/get-npm/35308/encoding-0.1.12.tgz#538b66f3ee62cd1ab51ec323829d1f9480c74beb"
+  dependencies:
+    iconv-lite "~0.4.13"
+
+es6-promise@^4.1.0:
+  version "4.2.4"
+  resolved "http://storage.mds.yandex.net/get-npm/35308/es6-promise-4.2.4.tgz#dc4221c2b16518760bd8c39a52d8f356fc00ed29"
+
+giphy-js-sdk-core@^1.0.5:
+  version "1.0.5"
+  resolved "http://storage.mds.yandex.net/get-npm/35308/giphy-js-sdk-core-1.0.5.tgz#b935208f482ab4afc55614dc8b9c5bf6153a7664"
+  dependencies:
+    es6-promise "^4.1.0"
+    isomorphic-fetch "^2.2.1"
+    lodash "^4.17.4"
+    promise "^7.1.1"
+
+iconv-lite@~0.4.13:
+  version "0.4.23"
+  resolved "http://storage.mds.yandex.net/get-npm/69187/iconv-lite-0.4.23.tgz#297871f63be507adcfbfca715d0cd0eed84e9a63"
+  dependencies:
+    safer-buffer ">= 2.1.2 < 3"
+
+is-stream@^1.0.1:
+  version "1.1.0"
+  resolved "http://storage.mds.yandex.net/get-npm/38095/is-stream-1.1.0.tgz#12d4a3dd4e68e0b79ceb8dbc84173ae80d91ca44"
+
+isomorphic-fetch@^2.2.1:
+  version "2.2.1"
+  resolved "http://storage.mds.yandex.net/get-npm/69187/isomorphic-fetch-2.2.1.tgz#611ae1acf14f5e81f729507472819fe9733558a9"
+  dependencies:
+    node-fetch "^1.0.1"
+    whatwg-fetch ">=0.10.0"
+
+lodash@^4.17.4:
+  version "4.17.10"
+  resolved "http://storage.mds.yandex.net/get-npm/35308/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
+
 long@^4.0.0:
   version "4.0.0"
   resolved "http://storage.mds.yandex.net/get-npm/35308/long-4.0.0.tgz#9a7b71cfb7d361a194ea555241c92f7468d5bf28"
+
+node-fetch@^1.0.1:
+  version "1.7.3"
+  resolved "http://storage.mds.yandex.net/get-npm/45674/node-fetch-1.7.3.tgz#980f6f72d85211a5347c6b2bc18c5b84c3eb47ef"
+  dependencies:
+    encoding "^0.1.11"
+    is-stream "^1.0.1"
 
 prism-media@^0.0.2:
   version "0.0.2"
   resolved "http://storage.mds.yandex.net/get-npm/35308/prism-media-0.0.2.tgz#aa917b084576c4df6488e4ea8e7d6d44aed4b411"
 
+promise@^7.1.1:
+  version "7.3.1"
+  resolved "http://storage.mds.yandex.net/get-npm/66641/promise-7.3.1.tgz#064b72602b18f90f29192b8b1bc418ffd1ebd3bf"
+  dependencies:
+    asap "~2.0.3"
+
 safe-buffer@~5.1.0:
   version "5.1.2"
   resolved "http://storage.mds.yandex.net/get-npm/69187/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
+
+"safer-buffer@>= 2.1.2 < 3":
+  version "2.1.2"
+  resolved "http://storage.mds.yandex.net/get-npm/38095/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
 
 snekfetch@^3.6.4:
   version "3.6.4"
@@ -35,6 +96,10 @@ snekfetch@^3.6.4:
 tweetnacl@^1.0.0:
   version "1.0.0"
   resolved "http://storage.mds.yandex.net/get-npm/69187/tweetnacl-1.0.0.tgz#713d8b818da42068740bf68386d0479e66fc8a7b"
+
+whatwg-fetch@>=0.10.0:
+  version "2.0.4"
+  resolved "http://storage.mds.yandex.net/get-npm/69187/whatwg-fetch-2.0.4.tgz#dde6a5df315f9d39991aa17621853d720b85566f"
 
 ws@^4.0.0:
   version "4.1.0"
