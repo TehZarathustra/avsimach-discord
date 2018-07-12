@@ -23,10 +23,6 @@ const WORDS = {
 		reply: {
 			file: 'https://cdn.discordapp.com/attachments/444034088429551619/466315013607522304/5b168d61ee2cc163d01846b8.png'
 		}
-	},
-	early: {
-		pattern: /где/gi,
-		reply: 'ранний доступ'
 	}
 };
 
