@@ -84,9 +84,9 @@ function checkInfa(message) {
 	message.reply('Проверяю инфу...');
 
 	setTimeout(() => {
-		channel.send('Проверил. ' + Math.floor(Math.random() * 10) > 4
+		channel.send('Проверил. ' + (Math.floor(Math.random() * 10) > 5
 			? 'Инфа ложная'
-			: 'Проверил. Инфу подтверждаю');
+			: 'Инфу подтверждаю'));
 	}, 5000);
 }
 
