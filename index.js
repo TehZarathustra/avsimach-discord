@@ -50,7 +50,7 @@ bot.on('message', message => {
 	if (message.content === 'debug') {
 		const rows = getRows();
 
-		console.log('success >>>', rows);
+		message.reply(rows.length);
 	}
 });
 
