@@ -2,11 +2,13 @@
   "name": "discord-bot",
   "description": "discord bot",
   "scripts": {
-    "start": "GIPHY_TOKEN=${GIPHY_TOKEN} BOT_TOKEN=${BOT_TOKEN} node index.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "discord.js": "^11.3.2",
     "express": "^4.16.3",
-    "giphy-js-sdk-core": "^1.0.5"
+    "giphy-js-sdk-core": "^1.0.5",
+    "googleapis": "^32.0.0",
+    "readline": "^1.3.0"
   }
 }

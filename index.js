@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 5000;
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const {search} = require('./lib/giphy.js');
+const {getRows} = require('./lib/jetchart.js');
 
 app.get('/', function (req, res) {
 	res.send('avsimach discord bot');
@@ -48,6 +49,12 @@ bot.on('message', message => {
 
 	if (/60\/40/gi.test(message.content)) {
 		checkInfa(message);
+	}
+
+	if (message.content === 'debug') {
+		const rows = getRows();
+
+		console.log('success >>>', rows);
 	}
 });
 

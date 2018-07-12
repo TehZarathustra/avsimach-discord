@@ -21,6 +21,13 @@ async-limiter@~1.0.0:
   version "1.0.0"
   resolved "http://storage.mds.yandex.net/get-npm/45674/async-limiter-1.0.0.tgz#78faed8c3d074ab81f22b4e985d79e8738f720f8"
 
+axios@^0.18.0:
+  version "0.18.0"
+  resolved "http://storage.mds.yandex.net/get-npm/45674/axios-0.18.0.tgz#32d53e4851efdc0a11993b6cd000789d70c05102"
+  dependencies:
+    follow-redirects "^1.3.0"
+    is-buffer "^1.1.5"
+
 body-parser@1.18.2:
   version "1.18.2"
   resolved "http://storage.mds.yandex.net/get-npm/45674/body-parser-1.18.2.tgz#87678a19d84b47d859b83199bd59bce222b10454"
@@ -35,6 +42,10 @@ body-parser@1.18.2:
     qs "6.5.1"
     raw-body "2.3.2"
     type-is "~1.6.15"
+
+buffer-equal-constant-time@1.0.1:
+  version "1.0.1"
+  resolved "http://storage.mds.yandex.net/get-npm/69187/buffer-equal-constant-time-1.0.1.tgz#f8e71132f7ffe6e01a5c9697a4c6f3e48d5cc819"
 
 bytes@3.0.0:
   version "3.0.0"
@@ -62,6 +73,12 @@ debug@2.6.9:
   dependencies:
     ms "2.0.0"
 
+debug@^3.1.0:
+  version "3.1.0"
+  resolved "http://storage.mds.yandex.net/get-npm/35308/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
+  dependencies:
+    ms "2.0.0"
+
 depd@1.1.1:
   version "1.1.1"
   resolved "http://storage.mds.yandex.net/get-npm/66641/depd-1.1.1.tgz#5783b4e1c459f06fa5ca27f991f3d06e7a310359"
@@ -83,6 +100,12 @@ discord.js@^11.3.2:
     snekfetch "^3.6.4"
     tweetnacl "^1.0.0"
     ws "^4.0.0"
+
+ecdsa-sig-formatter@1.0.10:
+  version "1.0.10"
+  resolved "http://storage.mds.yandex.net/get-npm/35308/ecdsa-sig-formatter-1.0.10.tgz#1c595000f04a8897dfb85000892a0f4c33af86c3"
+  dependencies:
+    safe-buffer "^5.0.1"
 
 ee-first@1.1.1:
   version "1.1.1"
@@ -145,6 +168,10 @@ express@^4.16.3:
     utils-merge "1.0.1"
     vary "~1.1.2"
 
+extend@^3.0.1:
+  version "3.0.1"
+  resolved "http://storage.mds.yandex.net/get-npm/35308/extend-3.0.1.tgz#a755ea7bc1adfcc5a31ce7e762dbaadc5e636444"
+
 finalhandler@1.1.1:
   version "1.1.1"
   resolved "http://storage.mds.yandex.net/get-npm/66641/finalhandler-1.1.1.tgz#eebf4ed840079c83f4249038c9d703008301b105"
@@ -157,6 +184,12 @@ finalhandler@1.1.1:
     statuses "~1.4.0"
     unpipe "~1.0.0"
 
+follow-redirects@^1.3.0:
+  version "1.5.1"
+  resolved "http://npm.yandex-team.ru/_not_found/https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.5.1.tgz#67a8f14f5a1f67f962c2c46469c79eaec0a90291"
+  dependencies:
+    debug "^3.1.0"
+
 forwarded@~0.1.2:
   version "0.1.2"
   resolved "http://storage.mds.yandex.net/get-npm/35308/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
@@ -164,6 +197,14 @@ forwarded@~0.1.2:
 fresh@0.5.2:
   version "0.5.2"
   resolved "http://storage.mds.yandex.net/get-npm/35308/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
+
+gcp-metadata@^0.6.3:
+  version "0.6.3"
+  resolved "http://storage.mds.yandex.net/get-npm/69187/gcp-metadata-0.6.3.tgz#4550c08859c528b370459bd77a7187ea0bdbc4ab"
+  dependencies:
+    axios "^0.18.0"
+    extend "^3.0.1"
+    retry-axios "0.3.2"
 
 giphy-js-sdk-core@^1.0.5:
   version "1.0.5"
@@ -173,6 +214,45 @@ giphy-js-sdk-core@^1.0.5:
     isomorphic-fetch "^2.2.1"
     lodash "^4.17.4"
     promise "^7.1.1"
+
+google-auth-library@^1.4.0:
+  version "1.6.1"
+  resolved "http://storage.mds.yandex.net/get-npm/69187/google-auth-library-1.6.1.tgz#9c73d831ad720c0c3048ab89d0ffdec714d07dd2"
+  dependencies:
+    axios "^0.18.0"
+    gcp-metadata "^0.6.3"
+    gtoken "^2.3.0"
+    jws "^3.1.5"
+    lodash.isstring "^4.0.1"
+    lru-cache "^4.1.3"
+    retry-axios "^0.3.2"
+
+google-p12-pem@^1.0.0:
+  version "1.0.2"
+  resolved "http://storage.mds.yandex.net/get-npm/38095/google-p12-pem-1.0.2.tgz#c8a3843504012283a0dbffc7430b7c753ecd4b07"
+  dependencies:
+    node-forge "^0.7.4"
+    pify "^3.0.0"
+
+googleapis@^32.0.0:
+  version "32.0.0"
+  resolved "http://storage.mds.yandex.net/get-npm/35308/googleapis-32.0.0.tgz#04795d1956568546bb3e3cca3cae29a759326493"
+  dependencies:
+    google-auth-library "^1.4.0"
+    pify "^3.0.0"
+    qs "^6.5.2"
+    url-template "^2.0.8"
+    uuid "^3.2.1"
+
+gtoken@^2.3.0:
+  version "2.3.0"
+  resolved "http://storage.mds.yandex.net/get-npm/38095/gtoken-2.3.0.tgz#4e0ffc16432d7041a1b3dbc1d97aac17a5dc964a"
+  dependencies:
+    axios "^0.18.0"
+    google-p12-pem "^1.0.0"
+    jws "^3.1.4"
+    mime "^2.2.0"
+    pify "^3.0.0"
 
 http-errors@1.6.2:
   version "1.6.2"
@@ -210,6 +290,10 @@ ipaddr.js@1.6.0:
   version "1.6.0"
   resolved "http://storage.mds.yandex.net/get-npm/66641/ipaddr.js-1.6.0.tgz#e3fa357b773da619f26e95f049d055c72796f86b"
 
+is-buffer@^1.1.5:
+  version "1.1.6"
+  resolved "http://storage.mds.yandex.net/get-npm/38095/is-buffer-1.1.6.tgz#efaa2ea9daa0d7ab2ea13a97b2b8ad51fefbe8be"
+
 is-stream@^1.0.1:
   version "1.1.0"
   resolved "http://storage.mds.yandex.net/get-npm/38095/is-stream-1.1.0.tgz#12d4a3dd4e68e0b79ceb8dbc84173ae80d91ca44"
@@ -221,6 +305,25 @@ isomorphic-fetch@^2.2.1:
     node-fetch "^1.0.1"
     whatwg-fetch ">=0.10.0"
 
+jwa@^1.1.5:
+  version "1.1.6"
+  resolved "http://storage.mds.yandex.net/get-npm/45674/jwa-1.1.6.tgz#87240e76c9808dbde18783cf2264ef4929ee50e6"
+  dependencies:
+    buffer-equal-constant-time "1.0.1"
+    ecdsa-sig-formatter "1.0.10"
+    safe-buffer "^5.0.1"
+
+jws@^3.1.4, jws@^3.1.5:
+  version "3.1.5"
+  resolved "http://storage.mds.yandex.net/get-npm/69187/jws-3.1.5.tgz#80d12d05b293d1e841e7cb8b4e69e561adcf834f"
+  dependencies:
+    jwa "^1.1.5"
+    safe-buffer "^5.0.1"
+
+lodash.isstring@^4.0.1:
+  version "4.0.1"
+  resolved "http://storage.mds.yandex.net/get-npm/38095/lodash.isstring-4.0.1.tgz#d527dfb5456eca7cc9bb95d5daeaf88ba54a5451"
+
 lodash@^4.17.4:
   version "4.17.10"
   resolved "http://storage.mds.yandex.net/get-npm/35308/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
@@ -228,6 +331,13 @@ lodash@^4.17.4:
 long@^4.0.0:
   version "4.0.0"
   resolved "http://storage.mds.yandex.net/get-npm/35308/long-4.0.0.tgz#9a7b71cfb7d361a194ea555241c92f7468d5bf28"
+
+lru-cache@^4.1.3:
+  version "4.1.3"
+  resolved "http://storage.mds.yandex.net/get-npm/45674/lru-cache-4.1.3.tgz#a1175cf3496dfc8436c156c334b4955992bce69c"
+  dependencies:
+    pseudomap "^1.0.2"
+    yallist "^2.1.2"
 
 media-typer@0.3.0:
   version "0.3.0"
@@ -255,6 +365,10 @@ mime@1.4.1:
   version "1.4.1"
   resolved "http://storage.mds.yandex.net/get-npm/38095/mime-1.4.1.tgz#121f9ebc49e3766f311a76e1fa1c8003c4b03aa6"
 
+mime@^2.2.0:
+  version "2.3.1"
+  resolved "http://storage.mds.yandex.net/get-npm/38095/mime-2.3.1.tgz#b1621c54d63b97c47d3cfe7f7215f7d64517c369"
+
 ms@2.0.0:
   version "2.0.0"
   resolved "http://storage.mds.yandex.net/get-npm/45674/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
@@ -270,6 +384,10 @@ node-fetch@^1.0.1:
     encoding "^0.1.11"
     is-stream "^1.0.1"
 
+node-forge@^0.7.4:
+  version "0.7.5"
+  resolved "http://storage.mds.yandex.net/get-npm/45674/node-forge-0.7.5.tgz#6c152c345ce11c52f465c2abd957e8639cd674df"
+
 on-finished@~2.3.0:
   version "2.3.0"
   resolved "http://storage.mds.yandex.net/get-npm/69187/on-finished-2.3.0.tgz#20f1336481b083cd75337992a16971aa2d906947"
@@ -283,6 +401,10 @@ parseurl@~1.3.2:
 path-to-regexp@0.1.7:
   version "0.1.7"
   resolved "http://storage.mds.yandex.net/get-npm/45674/path-to-regexp-0.1.7.tgz#df604178005f522f15eb4490e7247a1bfaa67f8c"
+
+pify@^3.0.0:
+  version "3.0.0"
+  resolved "http://storage.mds.yandex.net/get-npm/69187/pify-3.0.0.tgz#e5a4acd2c101fdf3d9a4d07f0dbc4db49dd28176"
 
 prism-media@^0.0.2:
   version "0.0.2"
@@ -301,9 +423,17 @@ proxy-addr@~2.0.3:
     forwarded "~0.1.2"
     ipaddr.js "1.6.0"
 
+pseudomap@^1.0.2:
+  version "1.0.2"
+  resolved "http://storage.mds.yandex.net/get-npm/35308/pseudomap-1.0.2.tgz#f052a28da70e618917ef0a8ac34c1ae5a68286b3"
+
 qs@6.5.1:
   version "6.5.1"
   resolved "http://storage.mds.yandex.net/get-npm/38095/qs-6.5.1.tgz#349cdf6eef89ec45c12d7d5eb3fc0c870343a6d8"
+
+qs@^6.5.2:
+  version "6.5.2"
+  resolved "http://storage.mds.yandex.net/get-npm/66641/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
 
 range-parser@~1.2.0:
   version "1.2.0"
@@ -318,11 +448,19 @@ raw-body@2.3.2:
     iconv-lite "0.4.19"
     unpipe "1.0.0"
 
+readline@^1.3.0:
+  version "1.3.0"
+  resolved "http://storage.mds.yandex.net/get-npm/69187/readline-1.3.0.tgz#c580d77ef2cfc8752b132498060dc9793a7ac01c"
+
+retry-axios@0.3.2, retry-axios@^0.3.2:
+  version "0.3.2"
+  resolved "http://storage.mds.yandex.net/get-npm/45674/retry-axios-0.3.2.tgz#5757c80f585b4cc4c4986aa2ffd47a60c6d35e13"
+
 safe-buffer@5.1.1:
   version "5.1.1"
   resolved "http://storage.mds.yandex.net/get-npm/66641/safe-buffer-5.1.1.tgz#893312af69b2123def71f57889001671eeb2c853"
 
-safe-buffer@~5.1.0:
+safe-buffer@^5.0.1, safe-buffer@~5.1.0:
   version "5.1.2"
   resolved "http://storage.mds.yandex.net/get-npm/69187/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
 
@@ -392,9 +530,17 @@ unpipe@1.0.0, unpipe@~1.0.0:
   version "1.0.0"
   resolved "http://storage.mds.yandex.net/get-npm/35308/unpipe-1.0.0.tgz#b2bf4ee8514aae6165b4817829d21b2ef49904ec"
 
+url-template@^2.0.8:
+  version "2.0.8"
+  resolved "http://storage.mds.yandex.net/get-npm/45674/url-template-2.0.8.tgz#fc565a3cccbff7730c775f5641f9555791439f21"
+
 utils-merge@1.0.1:
   version "1.0.1"
   resolved "http://storage.mds.yandex.net/get-npm/66641/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
+
+uuid@^3.2.1:
+  version "3.3.2"
+  resolved "http://storage.mds.yandex.net/get-npm/45674/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
 
 vary@~1.1.2:
   version "1.1.2"
@@ -410,3 +556,7 @@ ws@^4.0.0:
   dependencies:
     async-limiter "~1.0.0"
     safe-buffer "~5.1.0"
+
+yallist@^2.1.2:
+  version "2.1.2"
+  resolved "http://storage.mds.yandex.net/get-npm/38095/yallist-2.1.2.tgz#1c11f9218f076089a47dd512f93c6699a6a81d52"
