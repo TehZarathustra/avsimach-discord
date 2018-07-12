@@ -11,10 +11,6 @@ app.get('/', function (req, res) {
 	res.send('avsimach discord bot');
 });
 
-// debug
-comparePlanes();
-// debug
-
 const HAWKS_ID = '198147312244097024';
 const HOME_ID = '444034088429551619';
 const WORDS = {
@@ -33,6 +29,8 @@ const WORDS = {
 bot.login(process.env.BOT_TOKEN);
 
 bot.on('message', message => {
+	const compareRegex = /([M|F|S|A]\S*)\sи\s([M|F|S|A]\S*)/gi;
+
 	Object.keys(WORDS).forEach(key => {
 		const word = WORDS[key];
 
@@ -51,8 +49,29 @@ bot.on('message', message => {
 		checkInfa(message);
 	}
 
-	if (message.content === 'debug') {
-		// getPlanes()
+	console.log('in >>>');
+
+	if (/начальник, сравни|начальник сравни/gi.test(message.content)) {
+		console.log('сравниваю...');
+
+		message.content.match(compareRegex);
+
+		const firstPlane = RegExp.$1;
+		const secondPlane = RegExp.$2;
+
+		console.log(firstPlane, secondPlane);
+
+		comparePlanes(firstPlane, secondPlane)
+			.then(compareMessage => {
+				console.log('got message>>>', compareMessage);
+
+				message.reply(compareMessage);
+			})
+			.catch(error => {
+				console.log(error);
+
+				message.reply('что-то сломалось');
+			});
 	}
 });
 
