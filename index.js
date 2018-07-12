@@ -48,9 +48,13 @@ bot.on('message', message => {
 	}
 
 	if (message.content === 'debug') {
-		const rows = getRows();
-
-		message.reply(rows.length);
+		const rows = getRows()
+			.then(kek => {
+				console.log('super success >>>', kek);
+			})
+			.catch(error => {
+				console.log('error');
+			});
 	}
 });
 
