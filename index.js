@@ -4,12 +4,16 @@ const PORT = process.env.PORT || 5000;
 
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const {search} = require('./lib/giphy.js');
-const {getRows} = require('./lib/jetchart.js');
+const {search} = require('./lib/giphy');
+const {comparePlanes} = require('./lib/jetchart-index');
 
 app.get('/', function (req, res) {
 	res.send('avsimach discord bot');
 });
+
+// debug
+comparePlanes();
+// debug
 
 const HAWKS_ID = '198147312244097024';
 const HOME_ID = '444034088429551619';
@@ -48,13 +52,7 @@ bot.on('message', message => {
 	}
 
 	if (message.content === 'debug') {
-		const rows = getRows()
-			.then(kek => {
-				console.log('super success >>>', kek);
-			})
-			.catch(error => {
-				console.log('error');
-			});
+		// getPlanes()
 	}
 });
 
