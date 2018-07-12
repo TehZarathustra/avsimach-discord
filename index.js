@@ -6,6 +6,7 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 const {search} = require('./lib/giphy');
 const {comparePlanes} = require('./lib/jetchart-index');
+const COMPARE_REGEX = /([M|F|S|A]\S*)\sи\s([M|F|S|A]\S*)/gi;
 
 app.get('/', function (req, res) {
 	res.send('avsimach discord bot');
@@ -29,8 +30,6 @@ const WORDS = {
 bot.login(process.env.BOT_TOKEN);
 
 bot.on('message', message => {
-	const compareRegex = /([M|F|S|A]\S*)\sи\s([M|F|S|A]\S*)/gi;
-
 	Object.keys(WORDS).forEach(key => {
 		const word = WORDS[key];
 
@@ -49,22 +48,14 @@ bot.on('message', message => {
 		checkInfa(message);
 	}
 
-	console.log('in >>>');
-
 	if (/начальник, сравни|начальник сравни/gi.test(message.content)) {
-		console.log('сравниваю...');
-
-		message.content.match(compareRegex);
+		message.content.match(COMPARE_REGEX);
 
 		const firstPlane = RegExp.$1;
 		const secondPlane = RegExp.$2;
 
-		console.log(firstPlane, secondPlane);
-
 		comparePlanes(firstPlane, secondPlane)
 			.then(compareMessage => {
-				console.log('got message>>>', compareMessage);
-
 				message.reply(compareMessage);
 			})
 			.catch(error => {
