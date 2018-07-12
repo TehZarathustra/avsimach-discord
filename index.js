@@ -63,6 +63,12 @@ bot.on('guildMemberAdd', member => {
 				});
 			})
 			.catch(console.error);
+	} else {
+		channel.send('Дружок-пирожок, тобой выбрана неправильная дверь – клуб кожевенного ремесла два блока вниз', {
+			file: 'https://media.giphy.com/media/Xtg56rTKsvSXgZnAnc/giphy.gif'
+		});
+
+		member.addRole(guild.roles.find('name', 'observer'));
 	}
 });
 
