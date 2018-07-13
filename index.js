@@ -56,6 +56,8 @@ bot.on('message', message => {
 
 		if (!firstPlane || !secondPlane) {
 			message.reply('чет ничего не сматчилось, попробуй еще');
+
+			return;
 		}
 
 		comparePlanes(firstPlane, secondPlane)
