@@ -12,7 +12,8 @@ const {comparePlanes} = require('./lib/jetchart-index');
 const animeRegexp = require('./utils/anime-regexp');
 const COMPARE_REGEX = /([M|F|S|A]\S*)\sи\s([M|F|S|A]\S*)/gi;
 
-app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.json({limit: '70mb'}));
+app.use(bodyParser.urlencoded({limit: '70mb', extended: true}));
 app.get('/', function (req, res) {
 	res.send('avsimach discord bot');
 });
