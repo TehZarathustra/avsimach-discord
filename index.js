@@ -15,8 +15,6 @@ app.get('/', function (req, res) {
 	res.send('avsimach discord bot');
 });
 
-console.log('animeRegexp >>>', animeRegexp);
-
 const HAWKS_ID = '198147312244097024';
 const HOME_ID = '444034088429551619';
 const WORDS = {
@@ -44,6 +42,7 @@ bot.on('message', message => {
 	});
 
 	if (animeRegexp.test(message.content)) {
+		console.log('anime match >>>');
 		if (Boolean(Math.floor(Math.random() * 2))) {
 			getAnimeGif(message);
 		}
