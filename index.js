@@ -54,6 +54,10 @@ bot.on('message', message => {
 		const firstPlane = RegExp.$1;
 		const secondPlane = RegExp.$2;
 
+		if (!firstPlane || !secondPlane) {
+			message.reply('чет ничего не сматчилось, попробуй еще');
+		}
+
 		comparePlanes(firstPlane, secondPlane)
 			.then(compareMessage => {
 				message.reply(compareMessage);
