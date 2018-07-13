@@ -42,7 +42,6 @@ bot.on('message', message => {
 	});
 
 	if (animeRegexp.test(message.content)) {
-		console.log('anime match >>>');
 		if (Boolean(Math.floor(Math.random() * 2))) {
 			getAnimeGif(message);
 		}
