@@ -4,13 +4,18 @@ const PORT = process.env.PORT || 5000;
 
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const {search} = require('./lib/giphy');
+
+const {getAnimeGif} = require('./lib/imgur');
 const {comparePlanes} = require('./lib/jetchart-index');
+
+const animeRegexp = require('./utils/anime-regexp');
 const COMPARE_REGEX = /([M|F|S|A]\S*)\sи\s([M|F|S|A]\S*)/gi;
 
 app.get('/', function (req, res) {
 	res.send('avsimach discord bot');
 });
+
+console.log('animeRegexp >>>', animeRegexp);
 
 const HAWKS_ID = '198147312244097024';
 const HOME_ID = '444034088429551619';
@@ -38,9 +43,9 @@ bot.on('message', message => {
 		}
 	});
 
-	if (/anime|аниме|анимe|aниме|aнимe|онеме|oнеме|oнeмe|@ниме|@нимe/gi.test(message.content)) {
+	if (animeRegexp.test(message.content)) {
 		if (Boolean(Math.floor(Math.random() * 2))) {
-			search(message, 'anime');
+			getAnimeGif(message);
 		}
 	}
 
