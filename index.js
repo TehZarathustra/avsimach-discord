@@ -34,7 +34,7 @@ const WORDS = {
 	}
 };
 
-const memesLimit = 3;
+const MEMES_LIMIT = 3;
 let memesCount = 0;
 
 let memesInterval = setInterval(() => {
@@ -59,7 +59,7 @@ bot.on('message', message => {
 	}
 
 	if (/начальник, покажи|начальник покажи/gi.test(message.content)) {
-		if (memesCount >= 3) {
+		if (memesCount >= MEMES_LIMIT) {
 			message.reply('талоны на мемы закончились, ждите новых');
 
 			return;
