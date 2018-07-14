@@ -62,6 +62,10 @@ bot.on('message', message => {
 		checkInfa(message);
 	}
 
+	if (/egg|пожелой|пожилой|еггп|баклажан|егп/gi.test(message.content)) {
+		message.react('🍆');
+	}
+
 	if (/начальник, сравни|начальник сравни/gi.test(message.content)) {
 		message.content.match(COMPARE_REGEX);
 
