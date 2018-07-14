@@ -61,7 +61,11 @@ bot.on('message', message => {
 	if (/начальник, покажи|начальник покажи/gi.test(message.content)) {
 		if (memesCount > 3) {
 			message.reply('талоны на мемы закончились, ждите новых');
+
+			return;
 		}
+
+		memesCount++;
 
 		message.content.match(SHOW_REGEX);
 		const query = RegExp.$1;
