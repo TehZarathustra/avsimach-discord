@@ -18,7 +18,7 @@ describe('compareWeight()', function () {
 			score: 0.018229579698651865
 		};
 
-		var actualResults = compareWeight(first, second);
+		const actualResults = compareWeight(first, second);
 
 		expect(actualResults).to.deep.equal(expectedResults);
 	});
