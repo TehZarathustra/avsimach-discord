@@ -62,7 +62,7 @@ bot.on('message', message => {
 		checkInfa(message);
 	}
 
-	if (/egg|пожелой|пожилой|еггп|баклажан|егп/gi.test(message.content)) {
+	if (/egg|пожел|пожил|еггп|баклажан|егп/gi.test(message.content)) {
 		message.react('🍆');
 	}
 
