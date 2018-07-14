@@ -39,7 +39,7 @@ let memesCount = 0;
 
 let memesInterval = setInterval(() => {
 	memesCount = 0;
-}, 60000 * 10);
+}, 60000 * 15);
 
 bot.login(process.env.BOT_TOKEN);
 
@@ -66,6 +66,10 @@ bot.on('message', message => {
 		}
 
 		memesCount++;
+
+		if (MEMES_LIMIT - memesCount === 1) {
+			message.guild.channels.get(HOME_ID).send('остался один талон на один мем');
+		}
 
 		message.content.match(SHOW_REGEX);
 		const query = RegExp.$1;
