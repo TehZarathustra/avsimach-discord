@@ -62,6 +62,8 @@ bot.on('message', message => {
 		if (memesCount >= MEMES_LIMIT) {
 			message.reply('талоны на мемы закончились, ждите новых');
 
+			console.log('memesCount >', memesCount, 'MEMES_LIMIT >', MEMES_LIMIT);
+
 			return;
 		}
 
@@ -81,7 +83,7 @@ bot.on('message', message => {
 		checkInfa(message);
 	}
 
-	if (/egg|пожел|пожил|еггп|баклажан|егп/gi.test(message.content)) {
+	if (/egg|пожел|пожил|еггп|баклажан|эгг|егп/gi.test(message.content)) {
 		message.react('🍆');
 	}
 
