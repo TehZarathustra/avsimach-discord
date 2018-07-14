@@ -6,12 +6,7 @@ const PORT = process.env.PORT || 5000;
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 
-const {getAnimeGif, getGif} = require('./lib/imgur');
-const {comparePlanes} = require('./lib/jetchart-index');
-
-const animeRegexp = require('./utils/anime-regexp');
-const COMPARE_REGEX = /([M|F|S|A]\S*)\sи\s([M|F|S|A]\S*)/gi;
-const SHOW_REGEX = /покажи\s(.*)$/gi;
+const messages = require('./lib/messages');
 
 app.use(bodyParser.json({limit: '70mb'}));
 app.use(bodyParser.urlencoded({limit: '70mb', extended: true}));
@@ -21,94 +16,17 @@ app.get('/', function (req, res) {
 
 const HAWKS_ID = '198147312244097024';
 const HOME_ID = '444034088429551619';
-const WORDS = {
-	buddy: {
-		pattern: /дружок|дружочек/gi,
-		reply: 'пирожочек'
-	},
-	chack: {
-		pattern: /чак/gi,
-		reply: {
-			file: 'https://cdn.discordapp.com/attachments/444034088429551619/466315013607522304/5b168d61ee2cc163d01846b8.png'
-		}
-	}
-};
-
-const MEMES_LIMIT = 3;
-let memesCount = 0;
-
-let memesInterval = setInterval(() => {
-	memesCount = 0;
-}, 60000 * 15);
 
 bot.login(process.env.BOT_TOKEN);
 
 bot.on('message', message => {
-	Object.keys(WORDS).forEach(key => {
-		const word = WORDS[key];
+	Object.keys(messages).forEach(key => {
+		const word = messages[key];
 
 		if (word.pattern.test(message.content)) {
-			message.reply(word.reply);
+			word.reply(message);
 		}
 	});
-
-	if (animeRegexp.test(message.content)) {
-		if (Boolean(Math.floor(Math.random() * 2))) {
-			getAnimeGif(message);
-		}
-	}
-
-	if (/начальник, покажи|начальник покажи/gi.test(message.content)) {
-		if (memesCount >= MEMES_LIMIT) {
-			message.reply('талоны на мемы закончились, ждите новых');
-
-			console.log('memesCount >', memesCount, 'MEMES_LIMIT >', MEMES_LIMIT);
-
-			return;
-		}
-
-		memesCount++;
-
-		if (MEMES_LIMIT - memesCount === 1) {
-			message.guild.channels.get(HOME_ID).send('остался один талон на один мем');
-		}
-
-		message.content.match(SHOW_REGEX);
-		const query = RegExp.$1;
-
-		getGif(message, query);
-	}
-
-	if (/60\/40/gi.test(message.content)) {
-		checkInfa(message);
-	}
-
-	if (/egg|пожел|пожил|еггп|баклажан|эгг|егп/gi.test(message.content)) {
-		message.react('🍆');
-	}
-
-	if (/начальник, сравни|начальник сравни/gi.test(message.content)) {
-		message.content.match(COMPARE_REGEX);
-
-		const firstPlane = RegExp.$1;
-		const secondPlane = RegExp.$2;
-
-		if (!firstPlane || !secondPlane) {
-			message.reply('чет ничего не сматчилось, попробуй еще');
-
-			return;
-		}
-
-		comparePlanes(firstPlane, secondPlane)
-			.then(compareMessage => {
-				message.reply(compareMessage);
-			})
-			.catch(error => {
-				console.log(error);
-
-				message.reply('что-то сломалось');
-			});
-	}
 });
 
 bot.on('guildMemberAdd', member => {
@@ -142,18 +60,6 @@ function getHawksRoles(message) {
 		roles.find('name', 'ветеран раснарас').id,
 		roles.find('name', 'коричневые штаны').id
 	];
-}
-
-function checkInfa(message) {
-	const channel = message.guild.channels.get(HOME_ID);
-
-	message.reply('Проверяю инфу...');
-
-	setTimeout(() => {
-		channel.send('Проверил. ' + (Math.floor(Math.random() * 10) > 5
-			? 'Инфа ложная'
-			: 'Инфу подтверждаю'));
-	}, 5000);
 }
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
