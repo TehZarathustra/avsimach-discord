@@ -34,6 +34,13 @@ const WORDS = {
 	}
 };
 
+const memesLimit = 3;
+let memesCount = 0;
+
+let memesInterval = setInterval(() => {
+	memesCount = 0;
+}, 60000 * 10);
+
 bot.login(process.env.BOT_TOKEN);
 
 bot.on('message', message => {
@@ -52,6 +59,10 @@ bot.on('message', message => {
 	}
 
 	if (/начальник, покажи|начальник покажи/gi.test(message.content)) {
+		if (memesCount > 3) {
+			message.reply('талоны на мемы закончились, ждите новых');
+		}
+
 		message.content.match(SHOW_REGEX);
 		const query = RegExp.$1;
 
