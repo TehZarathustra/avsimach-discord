@@ -6,11 +6,12 @@ const PORT = process.env.PORT || 5000;
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 
-const {getAnimeGif} = require('./lib/imgur');
+const {getAnimeGif, getGif} = require('./lib/imgur');
 const {comparePlanes} = require('./lib/jetchart-index');
 
 const animeRegexp = require('./utils/anime-regexp');
 const COMPARE_REGEX = /([M|F|S|A]\S*)\sи\s([M|F|S|A]\S*)/gi;
+const SHOW_REGEX = /покажи\s(.*)$/gi;
 
 app.use(bodyParser.json({limit: '70mb'}));
 app.use(bodyParser.urlencoded({limit: '70mb', extended: true}));
@@ -48,6 +49,13 @@ bot.on('message', message => {
 		if (Boolean(Math.floor(Math.random() * 2))) {
 			getAnimeGif(message);
 		}
+	}
+
+	if (/начальник, покажи|начальник покажи/gi.test(message.content)) {
+		message.content.match(SHOW_REGEX);
+		const query = RegExp.$1;
+
+		getGif(message, query);
 	}
 
 	if (/60\/40/gi.test(message.content)) {
