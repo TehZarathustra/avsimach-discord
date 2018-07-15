@@ -55,7 +55,7 @@ describe('compareSpeed()', function () {
 		};
 
 		const expectedResults = {
-			message: '\nMiG-15bis **быстрее**, чем F-86F block 35\n',
+			message: '\nMiG-15bis **быстрее**, чем F-86 block 35\n',
 			score: 0.029126213592232997
 		};
 
