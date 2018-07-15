@@ -1,4 +1,4 @@
-# Начальник дискорд раздевалки
+# Начальник дискорд раздевалки [![Build Status](https://travis-ci.org/TehZarathustra/avsimach-discord.svg?branch=master)](https://travis-ci.org/TehZarathustra/avsimach-discord)
 
 Сравнит ЛТХ/ТТХ самолетов, покажет гифки и выдаст погоны
 
