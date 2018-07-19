@@ -56,7 +56,6 @@ function getHawksRoles(message) {
 	return [
 		roles.find('name', 'суетливый').id,
 		roles.find('name', 'ochoba').id,
-		roles.find('name', 'anime').id,
 		roles.find('name', 'ветеран раснарас').id,
 		roles.find('name', 'коричневые штаны').id
 	];
