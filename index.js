@@ -24,7 +24,7 @@ bot.on('message', message => {
 		const word = messages[key];
 
 		if (word.pattern.test(message.content)) {
-			word.reply(message);
+			word.reply(message, Discord);
 		}
 	});
 });
