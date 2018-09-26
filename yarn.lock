@@ -815,9 +815,9 @@ node-forge@^0.7.4:
   version "0.7.5"
   resolved "https://registry.npmjs.org/node-forge/-/node-forge-0.7.5.tgz#6c152c345ce11c52f465c2abd957e8639cd674df"
 
-nodejs-meme-generator@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.npmjs.org/nodejs-meme-generator/-/nodejs-meme-generator-1.0.2.tgz#a012a03b4bc87d3f29084307024c43a860ab8593"
+nodejs-meme-generator@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.npmjs.org/nodejs-meme-generator/-/nodejs-meme-generator-1.0.4.tgz#eec3cfd89872f40feafc3ad3e8fb41cad8535582"
   dependencies:
     canvas "^1.6.12"
     request "^2.88.0"
