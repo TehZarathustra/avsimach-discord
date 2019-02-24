@@ -14,6 +14,10 @@ app.get('/', function (req, res) {
 	res.send('avsimach discord bot');
 });
 
+app.post('/miska', function (req, res) {
+	res.send(`POST request to the homepage\nBody: ${JSON.stringify(req.body)}`);
+});
+
 const HAWKS_ID = '198147312244097024';
 const HOME_ID = '444034088429551619';
 
