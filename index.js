@@ -7,6 +7,7 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 
 const messages = require('./lib/messages');
+const {getPersonalFiles} = require('./lib/personalFile');
 
 app.use(bodyParser.json({limit: '70mb'}));
 app.use(bodyParser.urlencoded({limit: '70mb', extended: true}));
@@ -18,12 +19,18 @@ app.post('/miska', function (req, res) {
 	res.send(`POST request to the homepage\nBody: ${JSON.stringify(req.body)}`);
 });
 
-const HAWKS_ID = '198147312244097024';
 const HOME_ID = '444034088429551619';
 
 bot.login(process.env.BOT_TOKEN);
 
 bot.on('message', message => {
+	// const author = message.author;
+	// const {username} = author;
+
+	// if (username !== 'Zarathustra') {
+	// 	return;
+	// }
+
 	Object.keys(messages).forEach(key => {
 		const word = messages[key];
 
@@ -33,36 +40,29 @@ bot.on('message', message => {
 	});
 });
 
-bot.on('guildMemberAdd', member => {
+bot.on('guildMemberAdd', (member) => {
+	const memberId = member.id;
+	const {username} = member.user;
 	const guild = member.guild;
 	const channel = guild.channels.get(HOME_ID);
+	const suetaRole = guild.roles.find('name', 'суетливый').id;
 
-	if (member.user.id === HAWKS_ID) {
-		member.addRoles(getHawksRoles(member))
-			.then(() => {
-				channel.send('Слушай, во, я знаю как, браток! Хочешь я на одной ноге постою, а ты мне погону отдашь? Как цапля, хочешь?', {
-					file: 'https://coubsecure-s.akamaihd.net/get/b16/p/coub/simple/cw_timeline_pic/31e7cd621e0/dff6fc9898d6fc00818aa/med_1409276124_1382483368_image.jpg'
-				});
-			})
-			.catch(console.error);
-	} else {
-		channel.send('Дружок-пирожок, тобой выбрана неправильная дверь – клуб кожевенного ремесла два блока вниз', {
-			file: 'https://media.giphy.com/media/Xtg56rTKsvSXgZnAnc/giphy.gif'
+	getPersonalFiles()
+		.then((files = {}) => {
+			const existingUser = Object.values(JSON.parse(files))
+				.find(({id}) => id == memberId);
+
+			if (existingUser) {
+				member.addRoles([...existingUser.roles, suetaRole])
+					.then(() => {
+						channel.send(`**${username}** получает назад все свои погоны плюс суетливого за лив`);
+					});
+
+				return;
+			}
+
+			member.addRole(guild.roles.find('name', 'observer'))
 		});
-
-		member.addRole(guild.roles.find('name', 'observer'));
-	}
 });
 
-function getHawksRoles(message) {
-	const roles = message.guild.roles;
-
-	return [
-		roles.find('name', 'суетливый').id,
-		roles.find('name', 'ochoba').id,
-		roles.find('name', 'ветеран раснарас').id,
-		roles.find('name', 'коричневые штаны').id
-	];
-}
-
-app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
+app.listen(PORT, () => console.log(`Listening on ${PORT}`));
