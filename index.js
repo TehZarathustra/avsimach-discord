@@ -20,6 +20,8 @@ app.post('/miska', function (req, res) {
 });
 
 const HOME_ID = '444034088429551619';
+const RETRY_ROLE_LIMIT = 5;
+let retries = 0;
 
 bot.login(process.env.BOT_TOKEN);
 
@@ -60,11 +62,7 @@ bot.on('guildMemberAdd', (member) => {
 			});
 
 			if (existingUser) {
-				member.addRoles([...existingUser.roles, suetaRole])
-					.then(() => {
-						channel.send(`**${username}** получает назад все свои погоны плюс суетливого за лив`);
-					})
-					.catch(error => console.log(error));
+				addRoles(member, [...existingUser.roles, suetaRole], username, channel);
 
 				return;
 			}
@@ -73,5 +71,20 @@ bot.on('guildMemberAdd', (member) => {
 		})
 		.catch(error => console.log(error));
 });
+
+function addRoles(member, roles, username, channel) {
+	member.addRoles(roles)
+		.then(() => {
+			channel.send(`**${username}** получает назад все свои погоны плюс суетливого за лив`);
+		})
+		.catch((error) => {
+			console.log('addRoles error >', error);
+
+			if (retries < RETRY_ROLE_LIMIT) {
+				addRoles(...arguments);
+				retries++;
+			}
+		});
+}
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
