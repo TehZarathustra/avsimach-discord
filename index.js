@@ -52,17 +52,26 @@ bot.on('guildMemberAdd', (member) => {
 			const existingUser = Object.values(JSON.parse(files))
 				.find(({id}) => id == memberId);
 
+			console.log('got personal files', {
+				memberId,
+				username,
+				channel,
+				suetaRole
+			});
+
 			if (existingUser) {
 				member.addRoles([...existingUser.roles, suetaRole])
 					.then(() => {
 						channel.send(`**${username}** получает назад все свои погоны плюс суетливого за лив`);
-					});
+					})
+					.catch(error => console.log(error));
 
 				return;
 			}
 
-			member.addRole(guild.roles.find('name', 'observer'))
-		});
+			member.addRole(guild.roles.find('name', 'observer'));
+		})
+		.catch(error => console.log(error));
 });
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
