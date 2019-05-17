@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 5000;
+const isDevelopment = process.env.DEVELOPMENT;
 
 const Discord = require('discord.js');
 const bot = new Discord.Client();
@@ -26,12 +27,12 @@ let retries = 0;
 bot.login(process.env.BOT_TOKEN);
 
 bot.on('message', message => {
-	// const author = message.author;
-	// const {username} = author;
+	const author = message.author;
+	const {username} = author;
 
-	// if (username !== 'Zarathustra') {
-	// 	return;
-	// }
+	if (isDevelopment && username !== 'Zarathustra') {
+		return;
+	}
 
 	Object.keys(messages).forEach(key => {
 		const word = messages[key];
