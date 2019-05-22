@@ -10,8 +10,8 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 
 // establish database connection
-const {establishDatabaseConnection} = require('./database');
-establishDatabaseConnection();
+// const {establishDatabaseConnection} = require('./database');
+// establishDatabaseConnection();
 
 // configure express app
 app.use(bodyParser.json({limit: '70mb'}));
