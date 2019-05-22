@@ -3,15 +3,25 @@ const app = express();
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 5000;
 const isDevelopment = process.env.DEVELOPMENT;
+const KARAS_ID = 356283233207320577;
 
+// establish discordjs client
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 
+// establish database connection
+const {establishDatabaseConnection} = require('./database');
+establishDatabaseConnection();
+
+// configure express app
+app.use(bodyParser.json({limit: '70mb'}));
+app.use(bodyParser.urlencoded({limit: '70mb', extended: true}));
+
+// get api required libs
 const messages = require('./lib/messages');
 const {getPersonalFiles} = require('./lib/personalFile');
 
-app.use(bodyParser.json({limit: '70mb'}));
-app.use(bodyParser.urlencoded({limit: '70mb', extended: true}));
+// declare expressjs routes
 app.get('/', function (req, res) {
 	res.send('avsimach discord bot');
 });
@@ -20,6 +30,7 @@ app.post('/miska', function (req, res) {
 	res.send(`POST request to the homepage\nBody: ${JSON.stringify(req.body)}`);
 });
 
+// listen to discordjs events
 const HOME_ID = '444034088429551619';
 const RETRY_ROLE_LIMIT = 5;
 let retries = 0;
@@ -49,6 +60,14 @@ bot.on('guildMemberAdd', (member) => {
 	const guild = member.guild;
 	const channel = guild.channels.get(HOME_ID);
 	const suetaRole = guild.roles.find('name', 'суетливый').id;
+
+	if (KARAS_ID == memberId) {
+		channel.send('🐟 тревога');
+
+		return member.ban('🐟')
+			.then(() => console.log(`параноидальный стейт погубил ${member.displayName}`))
+			.catch(console.error);
+	}
 
 	getPersonalFiles()
 		.then((files = {}) => {
