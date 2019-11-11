@@ -37,18 +37,6 @@ let retries = 0;
 
 bot.login(process.env.BOT_TOKEN);
 
-bot.on('error', () => {
-  console.log(`error`);
-});
-
-bot.on('ready', () => {
-  console.log(`ready`);
-});
-
-bot.on('debug', (info) => {
-  console.log(`debug, ${info}`);
-});
-
 bot.on('message', message => {
 	const author = message.author;
 	const {username} = author;
@@ -61,7 +49,7 @@ bot.on('message', message => {
 		const word = messages[key];
 
 		if (word.pattern.test(message.content)) {
-			word.reply(message, Discord, bot);
+			word.reply(message, Discord);
 		}
 	});
 });
