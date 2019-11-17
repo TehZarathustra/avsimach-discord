@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+require('dotenv').config();
 const PORT = process.env.PORT || 5000;
 const isDevelopment = process.env.DEVELOPMENT;
+const devRoleName = 'инженер ЭВМ'; 
 const KARAS_ID = 356283233207320577;
 
 // establish discordjs client
@@ -52,8 +54,8 @@ bot.on('debug', (info) => {
 bot.on('message', message => {
 	const author = message.author;
 	const {username} = author;
-
-	if (isDevelopment && username !== 'Zarathustra') {
+	
+	if (isDevelopment && !message.member.roles.find("name", devRoleName)) {
 		return;
 	}
 
