@@ -9,3 +9,8 @@ function getAnnouncments(options = {}) {
 function insertAnnouncments(payload = {}) {
 	return announceShema.create(payload);
 }
+
+module.exports = {
+	getAnnouncments,
+	insertAnnouncments
+};
