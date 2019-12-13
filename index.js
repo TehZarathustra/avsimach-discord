@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 require('dotenv').config();
+const {sosiskaCheck} = require('./lib/sosiska');
 const PORT = process.env.PORT || 5000;
 const isDevelopment = process.env.DEVELOPMENT;
 const devRoleName = 'инженер ЭВМ'; 
@@ -66,6 +67,10 @@ bot.on('message', message => {
 			word.reply(message, Discord, bot);
 		}
 	});
+});
+
+bot.on('messageReactionAdd', (MessageReaction) => {
+	sosiskaCheck(MessageReaction, Discord, bot)
 });
 
 bot.on('guildMemberAdd', (member) => {
